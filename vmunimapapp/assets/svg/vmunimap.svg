@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   version="1.1"
+   id="svg1"
+   width="1086.4158"
+   height="831.68317"
+   viewBox="0 0 1086.4158 831.68317"
+   sodipodi:docname="vmunimap.svg"
+   inkscape:version="1.4 (86a8ad7, 2024-10-11)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     showgrid="true"
+     inkscape:zoom="1.0268334"
+     inkscape:cx="503.48968"
+     inkscape:cy="398.31196"
+     inkscape:window-width="1920"
+     inkscape:window-height="1059"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer2" />
+  <g
+     inkscape:groupmode="layer"
+     inkscape:label="Guide"
+     id="g1"
+     sodipodi:insensitive="true"
+     style="display:inline;opacity:0.301">
+    <image
+       width="1086.4158"
+       height="831.68317"
+       preserveAspectRatio="none"
+       style="image-rendering:optimizeQuality"
+       xlink:href="file:///Downloads/Documents/ShareX/Screenshots/2025-03/zen-03.07.25-01.26.50PM.png"
+       id="image1" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer5"
+     inkscape:label="Water Features" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer4"
+     inkscape:label="Green Areas" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="Roads">
+    <path
+       style="fill:none;fill-opacity:0.522255;stroke:#ffffff;stroke-opacity:1;stroke-width:5;stroke-dasharray:none"
+       d="m 1043.4994,830.22237 14.1211,-238.1107 -80.34409,-0.48693 c 0,0 -11.68641,-2.43467 -18.50349,17.04268 -6.81707,19.47736 -4.86933,138.28924 -4.86933,138.28924 l 93.49131,1.94774 z"
+       id="centrum_road" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Buildings">
+    <path
+       style="fill:#000000;fill-opacity:0.52225518"
+       d="M 8.4357001,366.17825 7.7470715,323.13896 59.222058,322.79465 59.566372,365.1453 Z"
+       id="arts_sciences" />
+    <path
+       style="fill:#000000;fill-opacity:0.52225518"
+       d="m 71.445215,348.44606 28.405929,-0.17216 0.688626,41.14556 1.37726,-0.17215 0.34431,12.73962 -1.72157,-0.34431 -0.34431,9.98511 -13.94473,0.34432 v 26.5122 H 58.877744 l -0.516472,-50.44204 13.600415,-0.51648 z"
+       id="alumni" />
+    <path
+       style="fill:#000000;fill-opacity:0.522255"
+       d="m 14.490738,370.48218 22.380428,-0.34432 0.688629,74.7162 -23.069057,-0.34431 z"
+       id="shs" />
+    <path
+       style="fill:#000000;fill-opacity:0.52225518"
+       d="m 70.412272,442.27171 43.211448,-0.34432 2.23804,83.32406 -44.933016,1.03294 z"
+       id="centrum" />
+    <path
+       style="fill:#000000;fill-opacity:0.52225518"
+       d="m 15.581886,451.38776 21.425093,-0.48693 1.217335,147.05405 -23.859763,0.48693 z"
+       id="cbaa" />
+    <path
+       style="fill:#000000;fill-opacity:0.52225518"
+       d="m 70.848888,549.99188 42.363252,-0.7304 1.21734,79.12677 -43.337125,-0.24347 z"
+       id="canteen" />
+    <path
+       style="fill:#000000;fill-opacity:0.52225518"
+       d="M 53.8062,594.05941 65.005681,593.81594 64.762214,605.74582 53.8062,605.50235 Z"
+       id="coop" />
+    <path
+       style="fill:#000000;fill-opacity:0.52225518"
+       d="m 59.345074,557.11329 -5.112807,3.16507 v 5.35628 l 4.86934,2.67813 4.808473,-2.67813 -0.06087,-5.78234 z"
+       id="gazebo1" />
+    <path
+       style="fill:#000000;fill-opacity:0.52225518"
+       d="m 96.169453,797.59779 -34.085376,0.97387 -0.486934,-51.12806 -9.738679,0.24346 0.243467,24.83363 -29.70297,0.7304 -1.217335,-141.94124 29.946438,0.24347 0.243467,37.49391 17.773088,-0.48693 -0.243467,23.85976 25.807499,-0.7304 z"
+       id="vmmc" />
+    <path
+       style="fill:#000000;fill-opacity:0.52225518"
+       d="m 180.16556,568.73884 28.48563,-29.70297 14.60802,1.21734 5.35627,-3.16508 2.67814,0.73041 3.40854,-2.43467 7.30401,4.13893 5.8432,8.03441 -2.67813,2.19121 2.1912,4.3824 -4.86934,5.84321 1.70427,16.31229 -29.21604,27.9987 -24.34669,23.12936 -21.91203,-21.66856 7.06054,-6.81708 -11.92988,-9.49521 18.26002,-18.50349 z"
+       id="chapel" />
+    <path
+       style="fill:#000000;fill-opacity:0.52225518"
+       d="m 255.39685,621.81464 46.25873,0.97387 -0.48694,23.61629 -47.23259,-1.21733 z"
+       id="henyo" />
+    <path
+       style="fill:#000000;fill-opacity:0.52225518"
+       d="m 96.656387,306.15971 23.981493,-0.24346 -2.06947,-138.28924 -21.546823,0.24347 z"
+       id="dentpharm" />
+    <path
+       style="fill:#000000;fill-opacity:0.52225518"
+       d="M 97.508521,157.52313 119.42055,157.0362 V 18.016556 L 97.508521,17.651355 Z"
+       id="specialscience" />
+    <path
+       style="fill:#000000;fill-opacity:0.52225518"
+       d="m 179.04343,19.625915 45.44949,-2.065886 0.68863,38.5632 -45.44949,1.032943 z"
+       id="maintenance" />
+    <path
+       style="fill:#000000;fill-opacity:0.52225518"
+       d="m 119.54228,653.95228 320.646,4.38241 -0.48693,26.78136 h -13.14722 l 0.24347,-2.9216 -293.62117,-4.38241 v 2.67814 l -13.87762,-0.24347 z"
+       id="medbldg" />
+    <path
+       style="fill:#000000;fill-opacity:0.52225518"
+       d="m 441.16215,658.21295 -0.60867,12.78202 4.99107,-0.12174 -0.24346,15.21669 145.34978,1.70427 0.12173,-27.39004 z"
+       id="engineering" />
+    <path
+       style="fill:#000000;fill-opacity:0.52225518"
+       d="m 595.88541,660.64762 -0.48694,27.75524 142.54991,0.48693 -0.85213,-28.60737 z"
+       id="rosalina" />
+    <path
+       style="fill:#000000;fill-opacity:0.52225518"
+       d="m 538.062,326.73267 75.9617,-0.48693 -0.48694,14.12108 -6.81707,289.23876 -78.8833,-1.94773 z"
+       id="court" />
+    <path
+       style="fill:#000000;fill-opacity:0.52225518"
+       d="m 332.6076,315.39189 c 0,0 1.72158,-36.84163 41.31772,-64.38677 39.59614,-27.54515 93.30917,-21.00317 116.72254,-3.78746 23.41337,17.21571 29.26672,33.05417 29.26672,33.05417 l 14.4612,-0.34431 -6.19766,307.47266 h -22.03611 c 0,0 -32.70986,43.3836 -86.7672,37.87457 -54.05735,-5.50903 -86.07857,-65.0754 -86.07857,-65.0754 z"
+       id="oval"
+       sodipodi:nodetypes="cssccccscc"
+       inkscape:label="" />
+    <path
+       style="fill:#000000;fill-opacity:0.52225518"
+       d="m 730.63492,319.86798 -44.41654,-3.09883 -2.75451,78.84797 -9.29649,-0.68863 -0.68863,71.61737 8.60786,-0.34431 -3.44314,163.54929 47.85968,1.03294 8.60786,-310.57149 z"
+       id="martin" />
+    <path
+       style="fill:#000000;fill-opacity:0.52225518"
+       d="m 757.83575,447.95289 179.38775,4.47609 v -27.88946 l -178.69912,-3.44314 z"
+       id="vetlect" />
+    <path
+       style="fill:#000000;fill-opacity:0.52225518"
+       d="m 752.32672,483.76158 82.63543,1.37725 -1.37725,35.46438 h -81.60249 z"
+       id="vetdean" />
+    <path
+       style="fill:#000000;fill-opacity:0.52225518"
+       d="m 843.57001,485.82746 h 90.21034 v 33.05418 h -90.21034 z"
+       id="vetlab" />
+    <path
+       style="fill:#000000;fill-opacity:0.52225518"
+       d="m 737.86552,413.17715 h 34.08712 V 380.8116 h -35.12006 z"
+       id="waste" />
+    <path
+       style="fill:#000000;fill-opacity:0.52225518"
+       d="m 785.03658,602.20569 h 18.59297 v -14.80551 h 13.77257 V 571.56172 H 937.2235 v 19.97023 h 14.4612 v 32.02123 h 9.29648 17.56003 v 46.82674 h -27.88946 v 15.49415 H 932.4031 v 20.31454 H 811.20447 v -19.2816 h -27.88946 z"
+       id="eventcenter" />
+    <path
+       style="fill:#000000;fill-opacity:0.52225518"
+       d="M 255.13689,114.31234 H 221.7384 v 35.12006 h 33.39849 z"
+       id="founders" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer6"
+     inkscape:label="Points of Interest" />
+</svg>
