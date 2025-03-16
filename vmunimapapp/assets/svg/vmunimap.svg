@@ -7,14 +7,37 @@
    width="1086.4158"
    height="831.68317"
    viewBox="0 0 1086.4158 831.68317"
+   sodipodi:docname="vmunimap.svg"
+   inkscape:version="1.4 (86a8ad7, 2024-10-11)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:zoom="1.4521616"
+     inkscape:cx="498.56709"
+     inkscape:cy="572.93898"
+     inkscape:window-width="1920"
+     inkscape:window-height="1059"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg1" />
   <defs
      id="defs1" />
   <g
      id="g1"
-     style="display:inline;opacity:0.301">
+     style="display:inline;opacity:0.301"
+     inkscape:label="background">
     <image
        width="1086.5861"
        height="831.68317"
@@ -24,7 +47,8 @@
        id="image1" />
   </g>
   <g
-     id="layer2">
+     id="buildings"
+     inkscape:label="buildings">
     <path
        style="fill:#000000;fill-opacity:0.522255"
        d="M 8.4357001,366.17825 7.7470715,323.13896 59.222058,322.79465 59.566372,365.1453 Z"
@@ -98,7 +122,7 @@
        d="m 538.062,326.73267 75.9617,-0.48693 -0.48694,14.12108 -6.81707,289.23876 -78.8833,-1.94773 z"
        id="court" />
     <path
-       style="fill:#000000;fill-opacity:0.522255"
+       style="fill:#000000;fill-opacity:0.522255;fill-rule:nonzero"
        d="m 332.6076,315.39189 c 0,0 1.72158,-36.84163 41.31772,-64.38677 39.59614,-27.54515 93.30917,-21.00317 116.72254,-3.78746 23.41337,17.21571 29.26672,33.05417 29.26672,33.05417 l 14.4612,-0.34431 -6.19766,307.47266 h -22.03611 c 0,0 -32.70986,43.3836 -86.7672,37.87457 -54.05735,-5.50903 -86.07857,-65.0754 -86.07857,-65.0754 z"
        id="oval" />
     <path
