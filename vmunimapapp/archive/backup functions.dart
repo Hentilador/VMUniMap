@@ -4,16 +4,28 @@ import 'package:path_drawing/path_drawing.dart';
 import 'package:touchable/touchable.dart';
 import 'package:xml/xml.dart';
 
-Future<String> loadSvgAsset(String svgPath) async {
-  return await rootBundle.loadString(svgPath);
-}
-
-Path svgPathToFlutterPath(String dAttribute) {
-  return parseSvgPathData(dAttribute);
-}
-
-List<Map<String, dynamic>> extractPathElements(String svgFilePath) {
+Future<XmlDocument> loadSvgAsset(String svgFilePath) async {
+  svgFilePath = await rootBundle.loadString(svgFilePath);
   final document = XmlDocument.parse(svgFilePath);
+  return document;
+}
+
+Future<Size> svgSize(String svgFilePath) async {
+  final document = await loadSvgAsset(svgFilePath);
+  final String? width = document.rootElement.getAttribute('width');
+  final String? height = document.rootElement.getAttribute('height');
+
+  if (width != null && height != null) {
+    return Size(double.parse(width), double.parse(height));
+  }
+  throw Exception();
+}
+
+
+Future<List<Map<String, dynamic>>> extractPathElements(
+  String svgFilePath,
+) async {
+  final document = await loadSvgAsset(svgFilePath);
   final paths = document.findAllElements('path').toList();
 
   List<Map<String, dynamic>> pathList = [];
@@ -26,14 +38,14 @@ List<Map<String, dynamic>> extractPathElements(String svgFilePath) {
 
     Map<String, dynamic> pathMap = {
       'id': idAttribute,
-      'd': svgPathToFlutterPath(dAttribute),
+      'd': parseSvgPathData(dAttribute),
     };
 
     pathList.add(pathMap);
   }
   return pathList;
 }
-
+// TODO: YOU HAVE TO CENTER THE DRAWING 
 class InteractiveMapPainter extends CustomPainter {
   final BuildContext context; // Add BuildContext to constructor
   final List<Map<String, dynamic>> pathList;
@@ -42,6 +54,7 @@ class InteractiveMapPainter extends CustomPainter {
     required this.context,
     required this.pathList,
   }); // Constructor to receive context
+
   @override
   void paint(Canvas canvas, Size size) {
     var myCanvas = TouchyCanvas(context, canvas); // Create TouchyCanvas

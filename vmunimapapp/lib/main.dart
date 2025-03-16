@@ -1,69 +1,39 @@
 import 'package:flutter/material.dart';
-import 'package:touchable/touchable.dart';
-
-import 'functions.dart';
+import 'theming.dart' show theme;
 
 void main() => runApp(const VMUniMapApp());
 
+// ----------------------------------------
 class VMUniMapApp extends StatelessWidget {
   const VMUniMapApp({super.key});
-  static final ColorScheme colorScheme = ColorScheme.fromSeed(
-    seedColor: const Color.fromARGB(255, 2, 1, 166),
-    brightness: Brightness.light,
-    dynamicSchemeVariant: DynamicSchemeVariant.fidelity,
-  );
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'VMUniMapApp',
-      home: Home(),
-      theme: ThemeData(
-        useMaterial3: true,
-        colorScheme: colorScheme,
-        appBarTheme: AppBarTheme(
-          foregroundColor: colorScheme.surface,
-          backgroundColor: colorScheme.primary,
-        ),
-        navigationBarTheme: NavigationBarThemeData(
-          backgroundColor: colorScheme.primary,
-          iconTheme: WidgetStatePropertyAll(
-            IconThemeData(color: colorScheme.onPrimary),
-          ),
-          labelTextStyle: WidgetStatePropertyAll(
-            TextStyle(color: colorScheme.onPrimary),
-          ),
-          indicatorColor: colorScheme.secondary,
-          indicatorShape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(24)),
-          ),
-        ),
-      ),
-    );
+    return MaterialApp(title: 'VMUniMapApp', home: CampusMap(), theme: theme);
   }
 }
 
-class Home extends StatefulWidget {
-  const Home({super.key});
+class CampusMap extends StatefulWidget {
+  const CampusMap({super.key});
 
   @override
-  State<Home> createState() => _HomeState();
+  State<CampusMap> createState() => _CampusMapState();
 }
 
-class _HomeState extends State<Home> {
-  int currentPageIndex = 0;
-  final TransformationController _controller = TransformationController();
+class _CampusMapState extends State<CampusMap> {
+  static int currentPageIndex = 0;
 
-  Future<List<Map<String, dynamic>>> initialize() async {
-    String svgFilePath = await loadSvgAsset('assets/svg/vmunimap.svg');
-    return extractPathElements(svgFilePath);
-  }
+  List<Widget> listOfDestinations = [
+    NavigationDestination(icon: Icon(Icons.map), label: 'Map'),
+    NavigationDestination(icon: Icon(Icons.info), label: 'Info'),
+  ];
+// 
+  String svgMapFilePath = r'assets/svg/vmunimap.svg';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('VMUniMap')),
-
       bottomNavigationBar: NavigationBar(
         onDestinationSelected: (int index) {
           setState(() {
@@ -71,40 +41,7 @@ class _HomeState extends State<Home> {
           });
         },
         selectedIndex: currentPageIndex,
-        destinations: const <Widget>[
-          NavigationDestination(icon: Icon(Icons.map), label: 'Map'),
-          NavigationDestination(icon: Icon(Icons.info), label: 'Info'),
-        ],
-      ),
-
-      body: FutureBuilder<List<Map<String, dynamic>>>(
-        future: initialize(),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return CircularProgressIndicator();
-          } else if (snapshot.hasError) {
-            return Text('Error: ${snapshot.error}');
-          } else if (snapshot.hasData) {
-            return InteractiveViewer(
-              child: CanvasTouchDetector(
-                gesturesToOverride: [GestureType.onTapDown],
-                builder:
-                    (context) => CustomPaint(
-                      size: Size(
-                        MediaQuery.of(context).size.width,
-                        MediaQuery.of(context).size.height,
-                      ),
-                      painter: InteractiveMapPainter(
-                        context: context,
-                        pathList: snapshot.data!,
-                      ),
-                    ),
-              ),
-            );
-          } else {
-            return Text('No data');
-          }
-        },
+        destinations: listOfDestinations,
       ),
     );
   }

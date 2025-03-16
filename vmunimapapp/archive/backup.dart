@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:touchable/touchable.dart';
 
-import 'functions.dart';
+import 'backup functions.dart';
 
-void main() {
-  runApp(VMUniMapApp());
-}
+void main() => runApp(const VMUniMapApp());
 
 class VMUniMapApp extends StatelessWidget {
-  VMUniMapApp({super.key});
-  final ColorScheme colorScheme = ColorScheme.fromSeed(
+  const VMUniMapApp({super.key});
+  static final ColorScheme colorScheme = ColorScheme.fromSeed(
     seedColor: const Color.fromARGB(255, 2, 1, 166),
     brightness: Brightness.light,
     dynamicSchemeVariant: DynamicSchemeVariant.fidelity,
@@ -18,7 +16,7 @@ class VMUniMapApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
+      title: 'VMUniMapApp',
       home: Home(),
       theme: ThemeData(
         useMaterial3: true,
@@ -54,15 +52,17 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int currentPageIndex = 0;
-  final TransformationController _controller = TransformationController();
+  String svgFilePath = r'assets/svg/vmunimap.svg';
+  // final TransformationController _controller = TransformationController();
 
   Future<List<Map<String, dynamic>>> initialize() async {
-    String svgFilePath = await loadSvgAsset('assets/svg/vmunimap.svg');
     return extractPathElements(svgFilePath);
   }
 
   @override
   Widget build(BuildContext context) {
+    print('width: ${MediaQuery.of(context).size.width}');
+    print('height: ${MediaQuery.of(context).size.height}');
     return Scaffold(
       appBar: AppBar(title: Text('VMUniMap')),
 
@@ -80,46 +80,39 @@ class _HomeState extends State<Home> {
       ),
 
       body: Center(
-        child: FutureBuilder<List<Map<String, dynamic>>>(
-          future: initialize(),
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return CircularProgressIndicator();
-            } else if (snapshot.hasError) {
-              return Text('Error: ${snapshot.error}');
-            } else if (snapshot.hasData) {
-              return InteractiveViewer(
-                // clipBehavior: Clip.none,
-                transformationController: _controller,
-                constrained: false,
-                maxScale: 1.5,
-                minScale: 1,
-                alignment: Alignment.center,
-                boundaryMargin: EdgeInsets.all(100),
-                
-                child: SizedBox(
-                  width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height,
+        child: SizedBox(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          child: FutureBuilder<List<Map<String, dynamic>>>(
+            future: initialize(),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return CircularProgressIndicator();
+              } else if (snapshot.hasError) {
+                return Text('Error: ${snapshot.error}');
+              } else if (snapshot.hasData) {
+                return InteractiveViewer(
+                  // boundaryMargin: ,
+                  maxScale: 1.5,
+                  // minScale: 0.5,
+                  alignment: Alignment.topLeft,
                   child: CanvasTouchDetector(
                     gesturesToOverride: [GestureType.onTapDown],
                     builder:
                         (context) => CustomPaint(
-                          size: Size(
-                            MediaQuery.of(context).size.width *0.5,
-                            MediaQuery.of(context).size.height *0.5,
-                          ),
+                          size: ,
                           painter: InteractiveMapPainter(
                             context: context,
                             pathList: snapshot.data!,
                           ),
                         ),
                   ),
-                ),
-              );
-            } else {
-              return Text('No data');
-            }
-          },
+                );
+              } else {
+                return Text('No data');
+              }
+            },
+          ),
         ),
       ),
     );
