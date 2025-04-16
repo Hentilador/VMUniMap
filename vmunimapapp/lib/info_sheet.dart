@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:vmunimapapp/moreinfoscreen.dart';
 import 'package:vmunimapapp/text_formatting.dart';
 
@@ -15,20 +14,6 @@ class InfoSheet extends StatelessWidget {
 
   final String buildingDescription = 'Lorem ipsum dolor sit amet';
 
-  Future<Image> _loadImage() async {
-    Image img;
-    try {
-      Future<ByteData> assetData = rootBundle.load(
-        'assets/images/$selectedBuildingID.jpg',
-      );
-      img = Image.memory(Uint8List.sublistView(await assetData));
-    } catch (e) {
-      Future<ByteData> assetData = rootBundle.load('assets/images/default.jpg');
-      img = Image.memory(Uint8List.sublistView(await assetData));
-    }
-    return img;
-  }
-
   @override
   Widget build(BuildContext context) {
     return IntrinsicHeight(
@@ -42,17 +27,10 @@ class InfoSheet extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Center(
-                    child: FutureBuilder(
-                      future: _loadImage(),
-                      builder: (context, snapshot) {
-                        if (snapshot.hasData) {
-                          return snapshot.data!;
-                        } else if (snapshot.hasError) {
-                          print(snapshot.error);
-                          return Placeholder();
-                        } else {
-                          return const CircularProgressIndicator();
-                        }
+                    child: Image.asset(
+                      'assets/images/$selectedBuildingID.jpg',
+                      errorBuilder: (context, error, stackTrace) {
+                        return Image.asset('assets/images/default.jpg');
                       },
                     ),
                   ),

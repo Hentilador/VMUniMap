@@ -20,6 +20,7 @@ class Building {
   final Path path;
   final Color fillColor;
   final Color strokeColor;
+  final double strokeWidth;
   bool selected = false;
 
   Building({
@@ -28,6 +29,7 @@ class Building {
     required this.path,
     required this.fillColor,
     this.strokeColor = Colors.black,
+    required this.strokeWidth,
   });
 
   // Get the bounds of the path for positioning
@@ -82,6 +84,7 @@ Future<CampusMapData> loadCampusMap() async {
 
       // Parse the fill color from style attribute
       Color fillColor = Colors.grey.withOpacity(0.5);
+      double strokeWidth = 1.0;
       if (style != null) {
         final List<String> properties = style.split(';');
         for (final property in properties) {
@@ -97,10 +100,20 @@ Future<CampusMapData> loadCampusMap() async {
             final double opacity = double.tryParse(opacityStr) ?? 1.0;
             fillColor = fillColor.withOpacity(opacity);
           }
+          if (property.startsWith('stroke-width:')) {
+            final String strokeWidthStr = property.split(':')[1].trim();
+            strokeWidth = double.tryParse(strokeWidthStr) ?? 1.0;
+          }
         }
       }
 
-      buildings[id] = Building(id: id, label: label!, path: path, fillColor: fillColor);
+      buildings[id] = Building(
+        id: id,
+        label: label!,
+        path: path,
+        fillColor: fillColor,
+        strokeWidth: strokeWidth,
+      );
     } catch (e) {
       print('Error processing building element: $e');
     }

@@ -7,7 +7,6 @@ class CampusMapWidget extends StatefulWidget {
   final String? selectedBuildingID;
   // final Color selectedColor;
   final Color strokeColor;
-  final double strokeWidth;
 
   const CampusMapWidget({
     super.key,
@@ -16,7 +15,6 @@ class CampusMapWidget extends StatefulWidget {
     this.selectedBuildingID,
     // this.selectedColor = Colors.blue,
     this.strokeColor = Colors.black,
-    this.strokeWidth = 1.0,
   });
 
   @override
@@ -70,7 +68,7 @@ class _CampusMapWidgetState extends State<CampusMapWidget> {
                               -building.path.getBounds().topLeft,
                             ),
                             strokeColor: widget.strokeColor,
-                            strokeWidth: widget.strokeWidth,
+                            strokeWidth: building.strokeWidth,
                           ),
                         ),
                       ),
