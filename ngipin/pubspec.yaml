@@ -1,0 +1,32 @@
+name: teeth_selector
+description: A simple dental chart showing teeth that can be selected/unselected like a set of checkboxes.
+version: 0.2.2
+homepage: https://github.com/alselawi/teeth-selector
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  path_drawing: ^1.0.1
+  xml: ^6.5.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+screenshots:
+  - description: 'This screenshot shows an example of teeth selector.'
+    path: screenshots/screenshot.png
+  - description: 'This screenshot shows an example of teeth selector with primary teeth and multiple teeth selected.'
+    path: screenshots/screenshot2.png
+
+topics:
+  - ui
+  - teeth
+  - tooth
+  - dental
+  - dental-chart
+
+flutter:

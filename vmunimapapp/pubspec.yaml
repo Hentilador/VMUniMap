@@ -36,10 +36,10 @@ dependencies:
   cupertino_icons: ^1.0.8
   xml: ^6.5.0
   path_drawing: ^1.0.1
-  touchable: ^1.0.2
   flutter_svg: ^2.0.17
   collection: ^1.19.1
   path_parsing: ^1.1.0
+  color_scheme_display: ^1.0.2
 
 dev_dependencies:
   flutter_test:

@@ -49,6 +49,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.19.1"
+  color_scheme_display:
+    dependency: "direct main"
+    description:
+      name: color_scheme_display
+      sha256: d80a98a582f7954c7087a6129fa49e82243e86757a458151b0421f9ede20bcc4
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.2"
   cupertino_icons:
     dependency: "direct main"
     description:
@@ -248,14 +256,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.7.4"
-  touchable:
-    dependency: "direct main"
-    description:
-      name: touchable
-      sha256: "50040b39778bb1adc8a480625de8681253bd2134785395cf16abd66bb13d3ed0"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.0.2"
   typed_data:
     dependency: transitive
     description:

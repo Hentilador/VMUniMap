@@ -1,70 +1,110 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:path_drawing/path_drawing.dart' as path_drawing;
 import 'package:xml/xml.dart';
-import 'package:collection/collection.dart';
 
-Future<XmlDocument> loadSvgAsset(String svgFilePath) async {
-  XmlDocument document;
-  document = XmlDocument.parse(await rootBundle.loadString(svgFilePath));
-  return document;
+final String svgFilePath = r'assets/svg/Campus Map.svg';
+
+// Data class to hold the map information
+class CampusMapData {
+  final Size size;
+  final Map<String, Building> buildings;
+
+  CampusMapData({required this.size, required this.buildings});
 }
 
+// Building class to represent each building on the map
 class Building {
   final String id;
-  final String svgPath;
+  final String label;
+  final Path path;
   final Color fillColor;
+  final Color strokeColor;
+  bool selected = false;
 
-  Building({required this.id, required this.svgPath, required this.fillColor});
+  Building({
+    required this.id,
+    this.label = 'N/A',
+    required this.path,
+    required this.fillColor,
+    this.strokeColor = Colors.black,
+  });
 
-  // Factory constructor to create a list of buildings from an XML document
-  factory Building.fromXmlElement(XmlElement element) {
-    final String? id = element.getAttribute('id');
-    final String? d = element.getAttribute('d');
-    final String? style = element.getAttribute('style');
+  // Get the bounds of the path for positioning
+  Rect getBounds() {
+    return path.getBounds();
+  }
+}
 
-    if (id == null || d == null || style == null) {
-      throw Exception('Invalid building element: missing required attributes');
-    }
+// Load SVG asset and parse it into a CampusMapData object
+Future<CampusMapData> loadCampusMap() async {
+  final String svgString = await rootBundle.loadString(svgFilePath);
+  final XmlDocument document = XmlDocument.parse(svgString);
 
-    final List<String> properties = style.split(';');
-    final String fillStr = properties[0].split(':')[1].trim();
-    final String opacityStr = properties[1].split(':')[1].trim();
-
-    final int alpha = (double.parse(opacityStr) * 255).round();
-    final int rgb = int.parse(fillStr.substring(1), radix: 16);
-    final int argb = (alpha << 24) | rgb;
-    final Color fillColor = Color(argb);
-
-    return Building(id: id, svgPath: d, fillColor: fillColor);
+  // Get the viewBox dimensions
+  final String? viewBox = document.rootElement.getAttribute('viewBox');
+  if (viewBox == null) {
+    throw Exception('SVG does not have a viewBox attribute');
   }
 
-  // Static method to populate building list from an XML document
-  static List<Building> fromDocument(XmlDocument document) {
-    final XmlElement? buildingGroup = document
-        .findAllElements('g')
-        .firstWhereOrNull(
-          (element) => element.getAttribute('id') == 'buildings',
-        );
+  final List<String> viewBoxParts = viewBox.split(' ');
+  final double width = double.parse(viewBoxParts[2]);
+  final double height = double.parse(viewBoxParts[3]);
+  final Size size = Size(width, height);
 
-    if (buildingGroup == null) {
-      throw Exception('No <g> element with id "buildings" found.');
-    }
+  // Find the buildings group
+  final XmlElement? buildingGroup =
+      document
+          .findAllElements('g')
+          .where((element) => element.getAttribute('id') == 'buildings')
+          .firstOrNull;
 
-    return buildingGroup
-        .findElements('path')
-        .map((element) {
-          try {
-            return Building.fromXmlElement(element);
-          } catch (e) {
-            print('Skipping invalid element: $e');
-            return null;
+  if (buildingGroup == null) {
+    throw Exception('No <g> element with id "buildings" found.');
+  }
+
+  // Parse all building paths
+  final Map<String, Building> buildings = {};
+
+  for (final element in buildingGroup.findElements('path')) {
+    try {
+      final String? id = element.getAttribute('id');
+      final String? style = element.getAttribute('style');
+      final String? d = element.getAttribute('d');
+      final String? label = element.getAttribute('inkscape:label');
+
+      if (id == null || d == null) {
+        continue;
+      }
+
+      // Parse the path data
+      final Path path = path_drawing.parseSvgPathData(d);
+
+      // Parse the fill color from style attribute
+      Color fillColor = Colors.grey.withOpacity(0.5);
+      if (style != null) {
+        final List<String> properties = style.split(';');
+        for (final property in properties) {
+          if (property.startsWith('fill:')) {
+            final String fillStr = property.split(':')[1].trim();
+            if (fillStr.startsWith('#')) {
+              final int rgb = int.parse(fillStr.substring(1), radix: 16);
+              fillColor = Color(0xFF000000 | rgb);
+            }
           }
-        })
-        .whereType<Building>()
-        .toList();
+          if (property.startsWith('fill-opacity:')) {
+            final String opacityStr = property.split(':')[1].trim();
+            final double opacity = double.tryParse(opacityStr) ?? 1.0;
+            fillColor = fillColor.withOpacity(opacity);
+          }
+        }
+      }
+
+      buildings[id] = Building(id: id, label: label!, path: path, fillColor: fillColor);
+    } catch (e) {
+      print('Error processing building element: $e');
+    }
   }
 
-  @override
-  String toString() {
-    return 'Building{id: $id, svgPath: $svgPath, fillColor: $fillColor}';
-  }
+  return CampusMapData(size: size, buildings: buildings);
 }
