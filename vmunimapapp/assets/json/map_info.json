@@ -1,0 +1,24 @@
+{
+    "map_objects": {
+        "Oval": {
+            "id": "Oval",
+            "name": "International Standard Rubberized Track & Field Oval",
+            "description": "",
+            "categories": {
+                
+            }
+        },
+        "MAHS": {
+            "id": "MAHS",
+            "name": "Medicine and Allied Health Science Bldg.",
+            "description": "",
+            "categories": {
+                "offices": {},
+                "classrooms": {},
+                "laboratories": {},
+                "others": {},
+                "restrooms": {}
+            }
+        }
+    }
+}

@@ -2,7 +2,7 @@ import 'package:color_scheme_display/color_scheme_display.dart';
 import 'package:flutter/material.dart';
 import 'package:vmunimapapp/info_sheet.dart';
 import 'package:vmunimapapp/map_widget.dart';
-import 'package:vmunimapapp/painting.dart';
+import 'package:vmunimapapp/svg_parsing.dart';
 import 'package:vmunimapapp/text_formatting.dart';
 
 class Home extends StatefulWidget {
@@ -69,6 +69,8 @@ class _HomeState extends State<Home> {
     }
   }
 
+  // void _
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -128,7 +130,7 @@ class _HomeState extends State<Home> {
       boundaryMargin: const EdgeInsets.all(20.0),
       minScale: 1.23,
       maxScale: 10,
-      clipBehavior: Clip.none,
+      // clipBehavior: Clip.none,
       child: Center(
         child: CampusMapWidget(
           mapData: mapData!,

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vmunimapapp/painting.dart';
+import 'package:vmunimapapp/svg_parsing.dart';
 
 class CampusMapWidget extends StatefulWidget {
   final CampusMapData mapData;
@@ -32,7 +32,7 @@ class _CampusMapWidgetState extends State<CampusMapWidget> {
         child: Stack(
           children: [
             // Background elements could be added here
-            // Image.asset('assets/images/campus.jpg'),
+            Image.asset('assets/images/campus.png'),
             // Buildings
             for (final MapEntry(key: id, value: building)
                 in widget.mapData.buildings.entries)
