@@ -1,65 +1,88 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:vmunimapapp/moreinfoscreen.dart';
+import 'package:flutter/services.dart';
+// Local Imports
+import 'package:vmunimapapp/more_info_screen.dart';
 import 'package:vmunimapapp/text_formatting.dart';
 
 class InfoSheet extends StatelessWidget {
   final String selectedBuildingID;
-  final String buildingName;
 
-  const InfoSheet({
-    super.key,
-    required this.selectedBuildingID,
-    required this.buildingName,
-  });
+  InfoSheet({super.key, required this.selectedBuildingID});
 
-  final String buildingDescription = 'Lorem ipsum dolor sit amet';
+  late final Future<Map<String, String>> buildingDataFuture = _initialize();
+
+  Future<Map<String, String>> _initialize() async {
+    try {
+      final String jsonFile = 'assets/json/map_info.json';
+      final jsonData = jsonDecode(await rootBundle.loadString(jsonFile));
+      final buildingInfo = jsonData['map_objects'][selectedBuildingID];
+
+      return {
+        'name': buildingInfo['name'] ?? 'Unknown Building',
+        'description': buildingInfo['description'] ?? '',
+      };
+    } catch (e) {
+      print('Error loading building data: $e');
+      return {};
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    return IntrinsicHeight(
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          children: [
-            SizedBox(
-              width: MediaQuery.of(context).size.width,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Center(
-                    child: Image.asset(
-                      'assets/images/$selectedBuildingID.jpg',
-                      errorBuilder: (context, error, stackTrace) {
-                        return Image.asset('assets/images/default.jpg');
-                      },
-                    ),
-                  ),
-                  Text(buildingName, style: titleText),
-                  SizedBox(height: 12),
-                  Text(buildingDescription),
-                  SizedBox(height: 12),
-                ],
-              ),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder:
-                        (context) => MoreInfoPage(
-                          selectedBuildingID: selectedBuildingID,
-                          buildingName: buildingName,
-                          buildingDescription: buildingDescription,
+    return FutureBuilder(
+      future: buildingDataFuture,
+      builder: (context, snapshot) {
+        if (!snapshot.hasData) {
+          return const Center(child: CircularProgressIndicator());
+        }
+
+        final data = snapshot.data!;
+
+        return SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              children: [
+                SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Center(
+                        child: Image.asset(
+                          'assets/images/$selectedBuildingID.jpg',
+                          errorBuilder: (context, error, stackTrace) {
+                            return Image.asset('assets/images/default.jpg');
+                          },
                         ),
+                      ),
+                      Text(data['name']!, style: titleText),
+                      SizedBox(height: 12),
+                      Text(data['description']!),
+                      SizedBox(height: 12),
+                    ],
                   ),
-                );
-              },
-              child: Text('More info'),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder:
+                            (context) => MoreInfoPage(
+                              selectedBuildingID: selectedBuildingID,
+                            ),
+                      ),
+                    );
+                  },
+                  child: Text('More info'),
+                ),
+              ],
             ),
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
   }
 }

@@ -1,5 +1,9 @@
-import 'package:color_scheme_display/color_scheme_display.dart';
 import 'package:flutter/material.dart';
+// External Imports
+import 'package:color_scheme_display/color_scheme_display.dart';
+import 'package:url_launcher/url_launcher.dart';
+// Local Imports
+import 'package:vmunimapapp/drawer.dart';
 import 'package:vmunimapapp/info_sheet.dart';
 import 'package:vmunimapapp/map_widget.dart';
 import 'package:vmunimapapp/svg_parsing.dart';
@@ -17,13 +21,16 @@ class _HomeState extends State<Home> {
   String? selectedBuildingID;
 
   bool isLoading = true;
-  // For navigation bar
-  int _currentPageIndex = 0;
+
+  int _currentPageIndex = 0; // For navigation bar
+
   // final List<Widget> _pages = [];
   final List<Widget> _listOfDestinations = const [
     NavigationDestination(icon: Icon(Icons.map), label: 'Map'),
     NavigationDestination(icon: Icon(Icons.palette), label: 'Colors'),
   ];
+  final TransformationController _transformationController =
+      TransformationController();
 
   @override
   void initState() {
@@ -45,31 +52,41 @@ class _HomeState extends State<Home> {
       });
     }
   }
-
-  void _onBuildingTapped(String buildingId, String buildingName) {
+  
+  dynamic _onBuildingSelected(String buildingId) {
     setState(() {
       // Toggle selection - if already selected, deselect it
-      selectedBuildingID =
-          buildingId; //buildingId == selectedBuildingID ? null :
+      selectedBuildingID = buildingId;
+      //buildingId == selectedBuildingID ? null :
+    });
+
+    
+    _zoomToBuilding(buildingId);
+  }
+
+  dynamic _onBuildingTapped(String buildingId) {
+    setState(() {
+      // Toggle selection - if already selected, deselect it
+      selectedBuildingID = buildingId;
+      //buildingId == selectedBuildingID ? null :
     });
 
     // Show building info if a building is selected
     if (selectedBuildingID != null) {
       showModalBottomSheet(
         context: context,
-        builder:
-            (ctx) => InfoSheet(
-              selectedBuildingID: buildingId,
-              buildingName: buildingName,
-            ),
-        showDragHandle: false,
+        builder: (ctx) => InfoSheet(selectedBuildingID: buildingId),
+        showDragHandle: true,
         isScrollControlled: true,
-        enableDrag: false,
+        enableDrag: true,
       );
     }
+
   }
 
-  // void _
+  void _zoomToBuilding(String buildingId) {
+    
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -77,8 +94,22 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         title: Text('VMUniMap', style: titleText),
         centerTitle: false,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.school),
+            onPressed: () async {
+              final Uri url = Uri.parse('https://vmuf.edu.ph/');
+              if (!await launchUrl(url)) {
+                throw ('Could not launch $url');
+              }
+            },
+          ),
+        ],
       ),
-      drawer: _buildDrawer(),
+      drawer: Sidebar(
+        onBuildingSelected: _onBuildingSelected,
+        transformationController: _transformationController,
+      ),
       bottomNavigationBar: NavigationBar(
         selectedIndex: _currentPageIndex,
         destinations: _listOfDestinations,
@@ -92,32 +123,12 @@ class _HomeState extends State<Home> {
     );
   }
 
-  Widget _buildDrawer() {
-    return Drawer(
-      child: ListView(
-        padding: EdgeInsets.zero,
-        children: [
-          DrawerHeader(
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: Image.asset('assets/images/default.jpg').image,
-                fit: BoxFit.cover,
-              ),
-              color: Theme.of(context).colorScheme.primary,
-            ),
-            child: null,
-          ),
-        ],
-      ),
-    );
-  }
-
   Widget _buildBody() {
     if (_currentPageIndex == 1) {
       return ColorSchemeDisplay();
     }
 
-    // Map page
+    // Safety checks
     if (isLoading) {
       return const Center(child: CircularProgressIndicator());
     }
@@ -126,8 +137,10 @@ class _HomeState extends State<Home> {
       return const Center(child: Text('No buildings found in SVG file'));
     }
 
+    // THE MAP
     return InteractiveViewer(
-      boundaryMargin: const EdgeInsets.all(20.0),
+      transformationController: _transformationController,
+      boundaryMargin: const EdgeInsets.fromLTRB(15, 0, 0, 0),
       minScale: 1.23,
       maxScale: 10,
       // clipBehavior: Clip.none,

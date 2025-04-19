@@ -40,6 +40,7 @@ dependencies:
   collection: ^1.19.1
   path_parsing: ^1.1.0
   color_scheme_display: ^1.0.2
+  url_launcher: ^6.3.1
 
 dev_dependencies:
   flutter_test:
@@ -70,6 +71,7 @@ flutter:
   assets:
     - assets/images/
     - assets/svg/
+    - assets/json/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
 

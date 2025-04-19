@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+// Local Imports
 import 'package:vmunimapapp/svg_parsing.dart';
 
 class CampusMapWidget extends StatefulWidget {
   final CampusMapData mapData;
-  final void Function(String buildingId, String buildingLabel) onBuildingSelected;
+  final void Function(String buildingId) onBuildingSelected;
   final String? selectedBuildingID;
   // final Color selectedColor;
   final Color strokeColor;
@@ -52,7 +53,7 @@ class _CampusMapWidgetState extends State<CampusMapWidget> {
                   child: GestureDetector(
                     key: Key("building-$id"),
                     onTap: () {
-                      widget.onBuildingSelected(id, building.label);
+                      widget.onBuildingSelected(id);
                     },
                     child: Tooltip(
                       message: building.label,
