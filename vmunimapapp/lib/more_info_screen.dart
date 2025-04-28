@@ -1,4 +1,5 @@
 import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 // Local Imports
@@ -88,13 +89,13 @@ class _MoreInfoPageState extends State<MoreInfoPage> {
                   SizedBox(height: 12),
                   Center(
                     child: Image.asset(
-                      'assets/images/${widget.selectedBuildingID}.jpg',
+                      'assets/images/buildings/${widget.selectedBuildingID}.webp',
                       errorBuilder: (context, error, stackTrace) {
-                        return Image.asset('assets/images/default.jpg');
+                        return Image.asset('assets/images/vmuf.webp');
                       },
                     ),
                   ),
-                  Text(data['description']!),
+                  // Text(data['description']!),
                   SizedBox(height: 12),
 
                   ExpansionPanelList(
@@ -126,11 +127,32 @@ class _MoreInfoPageState extends State<MoreInfoPage> {
                                     for (var info in data['categories'][category[i]][property].keys)
                                       Align(
                                         alignment: Alignment.centerLeft,
-                                        child: Text('${capitalize(info)}: ${data['categories'][category[i]][property][info]}'),
+                                        child: Text('${data['categories'][category[i]][property][info]}'),
                                       ),
                                       if (data['categories'][category[i]].length > 1)
                                         const Divider(),
                                   ]),
+                                  onTap: () {
+                                    showDialog(
+                                      context: context,
+                                      builder: (context) => FittedBox(
+                                        child: AlertDialog(
+                                          content: InteractiveViewer(
+                                            constrained: true,
+                                            minScale: 0.5,
+                                            maxScale: 3.0,
+                                            child: Image.asset('assets/images/rooms/${widget.selectedBuildingID}/$property.jpg',
+                                            filterQuality: FilterQuality.medium,
+                                            isAntiAlias: true,
+                                            errorBuilder: (context, error, stackTrace) {
+                                              return Image.asset('assets/images/vmuf.webp');
+                                            },
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    );
+                                  },
                                 ),
                             ],
                           ),

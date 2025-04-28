@@ -1,11 +1,11 @@
-import 'package:flutter/material.dart';
 // External Imports
-import 'package:color_scheme_display/color_scheme_display.dart';
+import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 // Local Imports
 import 'package:vmunimapapp/drawer.dart';
 import 'package:vmunimapapp/info_sheet.dart';
 import 'package:vmunimapapp/map_widget.dart';
+import 'package:vmunimapapp/more_info_screen.dart';
 import 'package:vmunimapapp/svg_parsing.dart';
 import 'package:vmunimapapp/text_formatting.dart';
 
@@ -27,7 +27,7 @@ class _HomeState extends State<Home> {
   // final List<Widget> _pages = [];
   final List<Widget> _listOfDestinations = const [
     NavigationDestination(icon: Icon(Icons.map), label: 'Map'),
-    NavigationDestination(icon: Icon(Icons.palette), label: 'Colors'),
+    NavigationDestination(icon: Icon(Icons.info), label: 'About'),
   ];
   final TransformationController _transformationController =
       TransformationController();
@@ -52,7 +52,7 @@ class _HomeState extends State<Home> {
       });
     }
   }
-  
+
   dynamic _onBuildingSelected(String buildingId) {
     setState(() {
       // Toggle selection - if already selected, deselect it
@@ -60,8 +60,11 @@ class _HomeState extends State<Home> {
       //buildingId == selectedBuildingID ? null :
     });
 
-    
-    _zoomToBuilding(buildingId);
+    if (selectedBuildingID != null) {
+      Navigator.push(context, MaterialPageRoute(builder: (context) =>
+          MoreInfoPage(selectedBuildingID: buildingId)));
+    }
+    // _zoomToBuilding(buildingId);
   }
 
   dynamic _onBuildingTapped(String buildingId) {
@@ -81,18 +84,23 @@ class _HomeState extends State<Home> {
         enableDrag: true,
       );
     }
-
   }
 
-  void _zoomToBuilding(String buildingId) {
-    
-  }
+  // void _zoomToBuilding(String buildingId) {
+
+  // }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('VMUniMap', style: titleText),
+        title: Row(
+          children: [
+            Image.asset('assets/images/vmuf.webp', height: 45),
+            const SizedBox(width: 8),
+            Text('VMUniMap', style: titleText),
+          ],
+        ),
         centerTitle: false,
         actions: [
           IconButton(
@@ -107,7 +115,8 @@ class _HomeState extends State<Home> {
         ],
       ),
       drawer: Sidebar(
-        onBuildingSelected: _onBuildingSelected,
+        onBuildingSelected:
+            _onBuildingSelected, // TODO: change back to _onBuildingSelected
         transformationController: _transformationController,
       ),
       bottomNavigationBar: NavigationBar(
@@ -125,7 +134,33 @@ class _HomeState extends State<Home> {
 
   Widget _buildBody() {
     if (_currentPageIndex == 1) {
-      return ColorSchemeDisplay();
+      // return ColorSchemeDisplay();
+      return Center(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset('assets/images/cics.webp', height: 150),
+              const SizedBox(height: 20),
+              const Text(
+                'This application was developed in partial fulfillment of the requirements for the Degree, Bachelor of Science in Computer Science.',
+                style: TextStyle(fontSize: 18),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 20),
+              const Text(
+                'Researchers:',
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 10),
+              const Text('Jan Angelo N. Heide, Lead Dev'),
+              const Text('Edrian Torraneo'),
+              const Text('John Vincent Uson'),
+            ],
+          ),
+        ),
+      );
     }
 
     // Safety checks
@@ -141,7 +176,7 @@ class _HomeState extends State<Home> {
     return InteractiveViewer(
       transformationController: _transformationController,
       boundaryMargin: const EdgeInsets.fromLTRB(15, 0, 0, 0),
-      minScale: 1.23,
+      minScale: 1.11,
       maxScale: 10,
       // clipBehavior: Clip.none,
       child: Center(

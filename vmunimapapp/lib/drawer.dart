@@ -25,6 +25,16 @@ class _SidebarState extends State<Sidebar> {
   List<MapItem> _filteredItems = [];
   List<MapItem> _allItems = [];
 
+  // List of categories or items to exclude from the drawer
+  final List<String> _excludedItems = [
+    'restroom',
+    'restrooms',
+    'bathroom',
+    'bathrooms',
+    'toilet',
+    'toilets',
+  ];
+
   @override
   void initState() {
     super.initState();
@@ -79,6 +89,7 @@ class _SidebarState extends State<Sidebar> {
   void _processMapData(Map<String, dynamic> data) {
     _allItems = [];
 
+    // First, add all buildings
     final buildings = data['map_objects'] as Map<String, dynamic>;
 
     // Add all buildings first
@@ -89,42 +100,109 @@ class _SidebarState extends State<Sidebar> {
         type: ItemType.building,
       );
       _allItems.add(building);
+    });
 
-      // Then add all categories and their items
+    // For grouped categories, we'll collect all items by category first
+    final Map<String, List<MapItem>> categorizedItems = {};
+
+    // Process all buildings and collect items by category
+    buildings.forEach((buildingId, buildingData) {
+      final buildingName = buildingData['name'];
       final categories =
           buildingData['categories'] as Map<String, dynamic>? ?? {};
-      categories.forEach((categoryName, categoryContent) {
-        // Only add category items if there are any
-        if (categoryContent is Map && categoryContent.isNotEmpty) {
-          // Add a category header item
-          final categoryItem = MapItem(
-            id: buildingId,
-            name: capitalize(categoryName),
-            type: ItemType.category,
-            subcategory: buildingData['name'],
-          );
-          _allItems.add(categoryItem);
 
-          // Add individual items in this category
-          categoryContent.forEach((itemName, itemDetails) {
+      categories.forEach((categoryName, categoryContent) {
+        // Skip excluded categories
+        if (_shouldExcludeCategory(categoryName)) {
+          return;
+        }
+
+        if (categoryContent is Map && categoryContent.isNotEmpty) {
+          // Filter out excluded items
+          final filteredContent = Map<String, dynamic>.from(categoryContent)
+            ..removeWhere((itemName, _) => _shouldExcludeItem(itemName));
+
+          if (filteredContent.isEmpty) {
+            return;
+          }
+
+          // Initialize category list if it doesn't exist
+          final normalizedCategoryName = _normalizeCategoryName(categoryName);
+          categorizedItems.putIfAbsent(normalizedCategoryName, () => []);
+
+          // Add items to this category
+          filteredContent.forEach((itemName, itemDetails) {
             final item = MapItem(
-              id: buildingId, // Still reference the parent building ID
+              id: buildingId,
               name: itemName,
               type: ItemType.location,
-              category: capitalize(categoryName),
-              subcategory: buildingData['name'],
+              category: capitalize(normalizedCategoryName),
+              subcategory: buildingName,
               details:
                   itemDetails is Map
                       ? itemDetails.cast<String, dynamic>()
                       : null,
             );
-            _allItems.add(item);
+
+            categorizedItems[normalizedCategoryName]!.add(item);
           });
         }
       });
     });
 
+    // Now add all categories and their items to _allItems
+    final sortedCategories = categorizedItems.keys.toList()..sort();
+
+    for (final categoryName in sortedCategories) {
+      // Skip if the category has no items after filtering
+      if (categorizedItems[categoryName]!.isEmpty) {
+        continue;
+      }
+
+      // Add category header
+      _allItems.add(
+        MapItem(
+          id: 'category_$categoryName',
+          name: capitalize(categoryName),
+          type: ItemType.category,
+        ),
+      );
+
+      // Sort items within category by name
+      final items = categorizedItems[categoryName]!;
+      items.sort((a, b) => a.name.compareTo(b.name));
+
+      // Add all items for this category
+      _allItems.addAll(items);
+    }
+
     _filteredItems = List.from(_allItems);
+  }
+
+  // Helper method to normalize category names (e.g., "Office", "Offices" -> "Offices")
+  String _normalizeCategoryName(String categoryName) {
+    final lowerName = categoryName.toLowerCase();
+
+    // Add your normalization rules here
+    if (lowerName == 'office') return 'offices';
+    if (lowerName == 'classroom') return 'classrooms';
+    if (lowerName == 'laboratory') return 'laboratories';
+    if (lowerName == 'lab') return 'laboratories';
+    if (lowerName == 'facility') return 'facilities';
+
+    return categoryName;
+  }
+
+  // Helper method to check if a category should be excluded
+  bool _shouldExcludeCategory(String categoryName) {
+    final lowerCaseName = categoryName.toLowerCase();
+    return _excludedItems.any((item) => lowerCaseName.contains(item));
+  }
+
+  // Helper method to check if an item should be excluded
+  bool _shouldExcludeItem(String itemName) {
+    final lowerCaseName = itemName.toLowerCase();
+    return _excludedItems.any((item) => lowerCaseName.contains(item));
   }
 
   void _handleItemTap(MapItem item) {
@@ -140,46 +218,35 @@ class _SidebarState extends State<Sidebar> {
     return Drawer(
       child: Column(
         children: [
-          DrawerHeader(
+          DecoratedBox(
             decoration: BoxDecoration(
-              image: DecorationImage(
-                image: Image.asset('assets/images/default.jpg').image,
-                fit: BoxFit.cover,
-              ),
-              color: Theme.of(context).colorScheme.primary,
+              color: Theme.of(context).colorScheme.surface,
+              image: DecorationImage(image: Image.asset('assets/images/vmuf.webp').image, fit: BoxFit.contain),
             ),
-            child: const Align(
-              alignment: Alignment.bottomLeft,
-              child: Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Text(
-                  'VMUniMap Directory',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
+            child: Align(alignment: Alignment.bottomLeft,
+            child: SizedBox(height: 200,),)
+          ),
+          Align(
+            alignment: Alignment.bottomLeft,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextField(
+                controller: _searchController,
+                decoration: InputDecoration(
+                  labelText: 'Search Buildings & Places',
+                  prefixIcon: const Icon(Icons.search),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  contentPadding: const EdgeInsets.symmetric(
+                    vertical: 0,
+                    horizontal: 12,
                   ),
                 ),
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextField(
-              controller: _searchController,
-              decoration: InputDecoration(
-                labelText: 'Search Buildings & Places',
-                prefixIcon: const Icon(Icons.search),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                contentPadding: const EdgeInsets.symmetric(
-                  vertical: 0,
-                  horizontal: 12,
-                ),
-              ),
-            ),
-          ),
+          
           FutureBuilder<Map<String, dynamic>>(
             future: _mapDataFuture,
             builder: (context, snapshot) {

@@ -1,4 +1,5 @@
 import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 // Local Imports
@@ -10,9 +11,9 @@ class InfoSheet extends StatelessWidget {
 
   InfoSheet({super.key, required this.selectedBuildingID});
 
-  late final Future<Map<String, String>> buildingDataFuture = _initialize();
+  late final Future<Map<String, dynamic>> buildingDataFuture = _initialize();
 
-  Future<Map<String, String>> _initialize() async {
+  Future<Map<String, dynamic>> _initialize() async {
     try {
       final String jsonFile = 'assets/json/map_info.json';
       final jsonData = jsonDecode(await rootBundle.loadString(jsonFile));
@@ -21,6 +22,7 @@ class InfoSheet extends StatelessWidget {
       return {
         'name': buildingInfo['name'] ?? 'Unknown Building',
         'description': buildingInfo['description'] ?? '',
+        'categories': buildingInfo['categories'] ?? {},
       };
     } catch (e) {
       print('Error loading building data: $e');
@@ -40,30 +42,40 @@ class InfoSheet extends StatelessWidget {
         final data = snapshot.data!;
 
         return SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(16),
-            child: Column(
-              children: [
-                SizedBox(
-                  width: MediaQuery.of(context).size.width,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Center(
-                        child: Image.asset(
-                          'assets/images/$selectedBuildingID.jpg',
-                          errorBuilder: (context, error, stackTrace) {
-                            return Image.asset('assets/images/default.jpg');
-                          },
-                        ),
+          child: Column(
+            children: [
+              SizedBox(
+                width: MediaQuery.of(context).size.width,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    InteractiveViewer(
+                      constrained: true,
+                      minScale: 0.5,
+                      maxScale: 3.0,
+                      child: Image.asset(
+                        'assets/images/buildings/$selectedBuildingID.webp',
+                        filterQuality: FilterQuality.medium,
+                        isAntiAlias: true,
+                        errorBuilder: (context, error, stackTrace) {
+                          return Image.asset('assets/images/vmuf.webp');
+                        },
                       ),
-                      Text(data['name']!, style: titleText),
-                      SizedBox(height: 12),
-                      Text(data['description']!),
-                      SizedBox(height: 12),
-                    ],
-                  ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        children: [
+                          Text(data['name']!, style: titleText),
+                          SizedBox(height: 12),
+                          Text(data['description']!),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
+              ),
+              if ((data['categories'] as Map).isNotEmpty) ...[
                 ElevatedButton(
                   onPressed: () {
                     Navigator.push(
@@ -78,8 +90,9 @@ class InfoSheet extends StatelessWidget {
                   },
                   child: Text('More info'),
                 ),
+                SizedBox(height: 12),
               ],
-            ),
+            ],
           ),
         );
       },

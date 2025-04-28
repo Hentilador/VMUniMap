@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+// External Imports
 // Local Imports
 import 'package:vmunimapapp/svg_parsing.dart';
 
@@ -33,7 +34,7 @@ class _CampusMapWidgetState extends State<CampusMapWidget> {
         child: Stack(
           children: [
             // Background elements could be added here
-            Image.asset('assets/images/campus.png'),
+            Image.asset('assets/images/campus.png', filterQuality: FilterQuality.medium,),
             // Buildings
             for (final MapEntry(key: id, value: building)
                 in widget.mapData.buildings.entries)
@@ -62,7 +63,13 @@ class _CampusMapWidgetState extends State<CampusMapWidget> {
                         clipBehavior: Clip.antiAlias,
                         decoration: ShapeDecoration(
                           color: (hoveredBuildingID == id
-                                  ? building.fillColor.withOpacity(0.7)
+                                  ? HSLColor.fromColor(building.fillColor)
+                                      .withLightness(
+                                          (building.fillColor.computeLuminance() +
+                                                  0.05)
+                                              .clamp(0.0, 1.0))
+                                      .withSaturation(0.85)
+                                      .toColor()
                                   : building.fillColor),
                           shape: BuildingBorder(
                             building.path.shift(

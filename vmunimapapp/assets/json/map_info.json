@@ -4,21 +4,95 @@
             "id": "Oval",
             "name": "International Standard Rubberized Track & Field Oval",
             "description": "",
-            "categories": {
-            }
+            "categories": {}
         },
         "MAHS": {
             "id": "MAHS",
             "name": "Medicine and Allied Health Science Bldg.",
-            "description": "",
+            "description": "Colleges: Nursing, Medical Laboratory Science, Medicine, Physical Therapy, Midwifery, Health Care Services, and Caregiving",
             "categories": {
-                "offices": {},
-                "classrooms": {},
-                "laboratories": {},
-                "others": {},
+                "offices": {
+                    "Main Nursing Office": {
+                        "location": "1st Floor"
+                    },
+                    "Physical Therapy Office": {
+                        "location": "1st Floor"
+                    },
+                    "College of Physical Therapy Dean's Office": {
+                        "location": "1st Floor"
+                    },
+                    "Medicine Office": {
+                        "location": "2nd Floor"
+                    },
+                    "Medical Laboratory Science Office": {
+                        "location": "2nd Floor"
+                    },
+                    "Physiology Office": {
+                        "location": "3rd Floor"
+                    },
+                    "College of Midwifery, Health Care Services, and Caregiving Office": {
+                        "location": "3rd Floor"
+                    }
+                },
+                "classrooms": {
+                    "Med 105": {
+                        "location": "1st Floor"
+                    },
+                    "Biochemistry 101": {
+                        "location": "1st Floor"
+                    },
+                    "Histology 201": {
+                        "location": "2nd Floor"
+                    },
+                    "Pathology 202": {
+                        "location": "2nd Floor"
+                    },
+                    "Microbiology 2": {
+                        "location": "2nd Floor"
+                    },
+                    "Physio-Pharma 303": {
+                        "location": "3rd Floor"
+                    },
+                    "College of Midwifery, Health Care Services, and Caregiving Lecture Room": {
+                        "location": "3rd Floor"
+                    },
+                    "Anatomy 301": {
+                        "location": "3rd Floor"
+                    }
+                },
+                "laboratories": {
+                    "Nursing Skills Laboratory": {
+                        "location": "1st Floor"
+                    },
+                    "Medical Laboratory Science MedTech Laboratory": {
+                        "location": "2nd Floor"
+                    },
+                    "Midwifery Skills Laboratory": {
+                        "location": "3rd Floor"
+                    },
+                    "Anatomy Laboratory Room": {
+                        "location": "3rd Floor"
+                    }
+                },
+                "libraries": {
+                    "Medicine Library": {
+                        "location": "1st Floor"
+                    }
+                },
+                "function halls": {
+                    "CPG Hall": {
+                        "location": "1st Floor"
+                    }
+                },
+                "others": {
+                    "Conference Consultation Room": {
+                        "location": "3rd Floor"
+                    }
+                },
                 "restrooms": {
                     "1st Floor Restrooms": {
-                        "location": "Under stairs near entrance, Under middle stairs in front of Henyo Corner"
+                        "location": "Under the stairs near the entrance",
+                        "location2": "Under the stairs in front of Henyo Corner"
                     }
                 }
             }
@@ -27,57 +101,213 @@
             "id": "SpecSci",
             "name": "Special Science High School / Education Bldg.",
             "description": "",
-            "categories": {
-                
-            }
+            "categories": {}
         },
         "DentPharm": {
             "id": "DentPharm",
             "name": "Dentistry & Pharmacy Bldg",
-            "description": "",
+            "description": "Colleges: Dentistry, Pharmacy",
             "categories": {
-                
+                "offices": {
+                    "College of Dentistry Dean's Office": {
+                        "location": "1st Floor"
+                    },
+                    "College of Dentistry Faculty Room": {
+                        "location": "1st Floor"
+                    },
+                    "Philippine Dental Students Association and Clinicians Club, VMUF Chapter Office": {
+                        "location": "2nd Floor"
+                    },
+                    "College of Pharmacy Dean's Office": {
+                        "location": "3rd Floor"
+                    },
+                    "College of Pharmacy Faculty Room": {
+                        "location": "3rd Floor"
+                    },
+                    "Laboratory Office": {
+                        "location": "3rd Floor"
+                    }
+                },
+                "classrooms": {
+                    "D/P 202": {
+                        "location": "2nd Floor"
+                    },
+                    "D/P 203": {
+                        "location": "2nd Floor"
+                    },
+                    "D/P 204": {
+                        "location": "2nd Floor"
+                    },
+                    "D/P 301": {
+                        "location": "3rd Floor"
+                    },
+                    "D/P 302": {
+                        "location": "3rd Floor"
+                    },
+                    "D/P 303": {
+                        "location": "3rd Floor"
+                    },
+                    "D/P 404": {
+                        "location": "4th Floor"
+                    },
+                    "D/P 403": {
+                        "location": "4th Floor"
+                    },
+                    "D/P 402": {
+                        "location": "4th Floor"
+                    }
+                },
+                "laboratories": {
+                    "Dental Laboratory": {
+                        "location": "1st Floor"
+                    },
+                    "Pre-Clinic Room": {
+                        "location": "1st Floor"
+                    },
+                    "Prostho Room": {
+                        "location": "1st Floor"
+                    },
+                    "Resto Room": {
+                        "location": "1st Floor"
+                    },
+                    "Endo-Perio Room": {
+                        "location": "1st Floor"
+                    },
+                    "Surgery Room": {
+                        "location": "1st Floor"
+                    },
+                    "Diagnostic Room": {
+                        "location": "1st Floor"
+                    },
+                    "Instrumentation Room": {
+                        "location": "3rd Floor"
+                    },
+                    "Manufacturing Laboratory": {
+                        "location": "3rd Floor"
+                    },
+                    "Chemistry Laboratory": {
+                        "location": "3rd Floor"
+                    },
+                    "Pharmacy Skills Lab": {
+                        "location": "4th Floor"
+                    },
+                    "Pharmaceutical Lab": {
+                        "location": "4th Floor"
+                    }
+                },
+                "libraries": {
+                    "Dentistry-Pharmacy Library": {
+                        "location": "2nd Floor"
+                    }
+                },
+                "others": {
+                    "Dentistry Audio Visual Room": {
+                        "location": "2nd Floor"
+                    },
+                    "Pharmacy Audio Visual Room": {
+                        "location": "4th Floor"
+                    }
+                },
+                "restrooms": {
+                    "1st Floor Restrooms": {
+                        "description": "Men's and Women's Restrooms",
+                        "location": "Under the stairs at each opposite side of the hallway"
+                    }
+                }
             }
         },
         "Maintenance": {
             "id": "Maintenance",
             "name": "Maintenance & Engineering Department Bldg.",
             "description": "",
-            "categories": {
-                
-            }
+            "categories": {}
         },
         "AS": {
             "id": "AS",
             "name": "Arts & Sciences Bldg.",
             "description": "",
             "categories": {
-                
+                "offices": {
+                    "ASN 101 Office of the Dean and Department Heads": {
+                        "location": "1st Floor"
+                    },
+                    "ASN 102 Faculty Office": {
+                        "location": "1st Floor"
+                    }
+                },
+                "classrooms": {
+                    "ASN 201": {
+                        "location": "2nd Floor"
+                    },
+                    "ASN 202": {
+                        "location": "2nd Floor"
+                    },
+                    "ASN 203": {
+                        "location": "2nd Floor"
+                    },
+                    "ASN 204": {
+                        "location": "2nd Floor"
+                    },
+                    "ASN 205": {
+                        "location": "2nd Floor"
+                    },
+                    "ASN 301": {
+                        "location": "3rd Floor"
+                    },
+                    "ASN 302": {
+                        "location": "3rd Floor"
+                    },
+                    "ASN 303": {
+                        "location": "3rd Floor"
+                    },
+                    "ASN 304": {
+                        "location": "3rd Floor"
+                    },
+                    "ASN 305": {
+                        "location": "3rd Floor"
+                    }
+                },
+                "laboratories": {
+                    "ASN 103 Speech Laboratory": {
+                        "location": "1st Floor"
+                    },
+                    "ASN 401 Physics Laboratory": {
+                        "location": "4th Floor"
+                    },
+                    "ASN 402 Chemistry Laboratory": {
+                        "location": "4th Floor"
+                    },
+                    "ASN 403 Zoology Laboratory": {
+                        "location": "4th Floor"
+                    }
+                },
+                "restrooms": {
+                    "2nd Floor Restrooms": {
+                        "location": "Beside ASN-204"
+                    },
+                    "3rd Floor Restrooms": {
+                        "location": "Beside ASN-304"
+                    }
+                }
             }
         },
         "Memorial": {
             "id": "Memorial",
             "name": "Founder's Memorial Park",
             "description": "",
-            "categories": {
-                
-            }
+            "categories": {}
         },
         "SHS": {
             "id": "SHS",
             "name": "Senior High School Bldg.",
             "description": "",
-            "categories": {
-                
-            }
+            "categories": {}
         },
         "Alumni": {
             "id": "Alumni",
             "name": "Alumni Center",
             "description": "",
-            "categories": {
-                
-            }
+            "categories": {}
         },
         "Centrum": {
             "id": "Centrum",
@@ -86,185 +316,489 @@
             "categories": {
                 "offices": {
                     "Registrar's Office": {
-                        "description": "Office of the Registrars",
-                        "location": "1st Floor, Windows A-H",
-                        "hours": "8:00 am to 4:00 pm"
+                        "location": "1st Floor, Windows A-I"
                     },
-                    "President's Office": {
-                        "description": "Office of the School President",
-                        "location": "1st Floor",
-                        "hours": "8:00 am to 4:00 pm"
-                    }
-                },
-                "classrooms": {},
-                "laboratories": {},
-                "others": {},
-                "restrooms": {
-                    "4th Floor Restrooms": {
+                    "Business Office": {
+                        "location": "1st Floor"
+                    },
+                    "CEN 201 Marketing and Communications Department Educational Media Center": {
+                        "location": "2nd Floor"
+                    },
+                    "School of Law Dean's Office": {
+                        "location": "3rd Floor"
+                    },
+                    "University Librarians Office": {
+                        "location": "3rd Floor, inside CEN 302"
+                    },
+                    "Research, Planning, and Development Center": {
+                        "location": "3rd Floor, beside the stairs"
+                    },
+                    "Graduate School Office": {
+                        "location": "4th Floor"
+                    },
+                    "Graduate School Faculty Room": {
+                        "location": "4th Floor"
+                    },
+                    "Internet Center and Information Technology Services": {
                         "location": "4th Floor"
                     }
-                }                
+                },
+                "classrooms": {
+                    "CEN 402": {
+                        "location": "4th Floor"
+                    },
+                    "CEN 403": {
+                        "location": "4th Floor"
+                    },
+                    "CEN 404": {
+                        "location": "4th Floor"
+                    },
+                    "CEN 405": {
+                        "location": "4th Floor"
+                    },
+                    "CEN 406": {
+                        "location": "4th Floor"
+                    },
+                    "CEN 407": {
+                        "location": "4th Floor"
+                    },
+                    "CEN 408": {
+                        "location": "4th Floor"
+                    }
+                },
+                "laboratories": {
+                    "LAN 1 Computer Laboratory": {
+                        "location": "4th Floor"
+                    }
+                },
+                "libraries": {
+                    "Main Library": {
+                        "location": "2nd Floor"
+                    },
+                    "CEN 301 School of Law Library": {
+                        "location": "3rd Floor"
+                    },
+                    "CEN 302 Graduate School Library": {
+                        "location": "3rd Floor"
+                    }
+                },
+                "function halls": {
+                    "Social Hall": {
+                        "location": "5th Floor"
+                    }
+                },
+                "restrooms": {
+                    "1st Floor Restrooms": {
+                        "location": "Female bathroom in front of HR",
+                        "location2": "Male bathroom beside the stairs"
+                    },
+                    "4th Floor Restrooms": {
+                        "location": "Inside hallway"
+                    }
+                }
             }
         },
         "BSA": {
             "id": "BSA",
             "name": "Business Administration Bldg.",
-            "description": "",
+            "description": "Colleges: Business Administration and Accountancy, Information and Computer Studies",
             "categories": {
-                
+                "offices": {
+                    "College of Business Administration and Accountancy Office": {
+                        "location": "1st Floor"
+                    },
+                    "College of Information and Computer Studies Office": {
+                        "location": "1st Floor"
+                    },
+                    "CICS Consultation Room and Server Room": {
+                        "location": "1st Floor"
+                    }
+                },
+                "classrooms": {
+                    "BA 101": {
+                        "location": "1st Floor"
+                    },
+                    "BA 102": {
+                        "location": "1st Floor"
+                    },
+                    "BA 201": {
+                        "location": "2nd Floor"
+                    },
+                    "BA 202": {
+                        "location": "2nd Floor"
+                    },
+                    "BA 203": {
+                        "location": "2nd Floor"
+                    },
+                    "BA 204": {
+                        "location": "2nd Floor"
+                    },
+                    "BA 205": {
+                        "location": "2nd Floor"
+                    },
+                    "BA 301": {
+                        "location": "3rd Floor"
+                    },
+                    "BA 302": {
+                        "location": "3rd Floor"
+                    },
+                    "BA 303": {
+                        "location": "3rd Floor"
+                    },
+                    "BA 304": {
+                        "location": "3rd Floor"
+                    },
+                    "BA 305": {
+                        "location": "3rd Floor"
+                    },
+                    "BA 306": {
+                        "location": "3rd Floor"
+                    },
+                    "BA 307": {
+                        "location": "3rd Floor"
+                    }
+                },
+                "laboratories": {
+                    "WLAN 1": {
+                        "location": "1st Floor"
+                    },
+                    "WLAN 2": {
+                        "location": "1st Floor"
+                    }
+                },
+                "restrooms": {
+                    "1st Floor Restrooms": {
+                        "description": "Men's Restroom",
+                        "location": "Beside stairs"
+                    },
+                    "2nd Floor Restrooms": {
+                        "description": "Women's Restroom",
+                        "location": "Beside stairs"
+                    },
+                    "3rd Floor Restrooms": {
+                        "description": "Men's Restroom",
+                        "location": "Beside stairs"
+                    }
+                }
             }
         },
         "Cafeteria1": {
             "id": "Cafeteria1",
             "name": "Cafeteria 1 & Commissary",
             "description": "",
-            "categories": {
-                
-            }
+            "categories": {}
         },
         "OSA": {
             "id": "OSA",
             "name": "Office of Student Affairs and Services",
             "description": "",
-            "categories": {
-                
-            }
+            "categories": {}
         },
         "Clinic": {
             "id": "Clinic",
             "name": "University Clinic",
             "description": "",
-            "categories": {
-                
-            }
+            "categories": {}
         },
         "Security": {
             "id": "Security",
             "name": "Security Office",
             "description": "",
-            "categories": {
-                
-            }
+            "categories": {}
         },
         "Guidance": {
             "id": "Guidance",
             "name": "Guidance & Testing Center",
             "description": "",
-            "categories": {
-                
-            }
+            "categories": {}
         },
         "Virginian": {
             "id": "Virginian",
             "name": "The Virginian",
             "description": "",
-            "categories": {
-                
-            }
+            "categories": {}
         },
         "COOP": {
             "id": "COOP",
             "name": "Multipurpose Cooperative Store",
             "description": "",
-            "categories": {
-                
-            }
+            "categories": {}
         },
         "Chapel": {
             "id": "Chapel",
             "name": "University Chapel",
             "description": "",
-            "categories": {
-                
-            }
+            "categories": {}
         },
         "VMMC": {
             "id": "VMMC",
             "name": "Virgen Milagrosa Medical Center",
             "description": "",
-            "categories": {
-                
-            }
+            "categories": {}
         },
         "Tri": {
             "id": "Tri",
             "name": "VMMC Triage Area",
             "description": "",
-            "categories": {
-                
-            }
+            "categories": {}
         },
         "Engi": {
             "id": "Engi",
             "name": "Engineering / Nursing Annex Bldg.",
-            "description": "",
+            "description": "College: Engineering",
             "categories": {
-                
+                "offices": {
+                    "College of Engineering Dean's Office": {
+                        "location": "1st Floor"
+                    },
+                    "College of Engineering Faculty Room": {
+                        "location": "1st Floor"
+                    },
+                    "Annex Nursing Office": {
+                        "location": "4th Floor"
+                    }
+                },
+                "classrooms": {
+                    "EN 104": {
+                        "location": "1st Floor"
+                    },
+                    "EN 106": {
+                        "location": "2nd Floor"
+                    },
+                    "EN 107": {
+                        "location": "2nd Floor"
+                    },
+                    "EN 108": {
+                        "location": "2nd Floor"
+                    },
+                    "EN 109": {
+                        "location": "2nd Floor"
+                    },
+                    "EN 110": {
+                        "location": "2nd Floor"
+                    },
+                    "EN 111": {
+                        "location": "2nd Floor"
+                    },
+                    "RM 302": {
+                        "location": "3rd Floor"
+                    },
+                    "RM 303": {
+                        "location": "3rd Floor"
+                    },
+                    "RM 304": {
+                        "location": "3rd Floor"
+                    },
+                    "RM 305": {
+                        "location": "3rd Floor"
+                    },
+                    "RM 306": {
+                        "location": "3rd Floor"
+                    },
+                    "RM 307": {
+                        "location": "3rd Floor"
+                    },
+                    "RM 401": {
+                        "location": "4th Floor"
+                    },
+                    "RM 402": {
+                        "location": "4th Floor"
+                    },
+                    "RM 403": {
+                        "location": "4th Floor"
+                    },
+                    "RM 404": {
+                        "location": "4th Floor"
+                    },
+                    "RM 405": {
+                        "location": "4th Floor"
+                    },
+                    "RM 406": {
+                        "location": "4th Floor"
+                    }
+                },
+                "laboratories": {
+                    "Civil Engineering Laboratory": {
+                        "location": "1st Floor"
+                    },
+                    "Mechanical Engineering Laboratory": {
+                        "location": "1st Floor"
+                    },
+                    "EN 105 AutoCAD Laboratory": {
+                        "location": "1st Floor"
+                    }
+                },
+                "restrooms": {
+                    "1st Floor Restrooms": {
+                        "location": "Beside stairs"
+                    },
+                    "4th Floor Restrooms": {
+                        "location": "On each opposite side of the balcony"
+                    }
+                }
             }
         },
         "RQPM": {
             "id": "RQPM",
             "name": "Dr. Rosalina Q Posadas Memorial Bldg.",
-            "description": "",
+            "description": "Colleges: Hospitality Management, Radiologic Technology, School of Technical Vocational Education and Skills Training",
             "categories": {
-                
+                "offices": {
+                    "Hospitality Management Faculty Office ": {
+                        "location": "1st Floor"
+                    },
+                    "Radiologic Technology Office ": {
+                        "location": "3rd Floor"
+                    },
+                    "School of Technical Vocational Education and Skills Training Office": {
+                        "location": "4th Floor"
+                    }
+                },
+                "classrooms": {
+                    "Kitchen": {
+                        "location": "1st Floor"
+                    },
+                    "Baking Area": {
+                        "location": "1st Floor"
+                    },
+                    "101": {
+                        "location": "1st Floor"
+                    },
+                    "201": {
+                        "location": "2nd Floor"
+                    },
+                    "202": {
+                        "location": "2nd Floor"
+                    },
+                    "203": {
+                        "location": "2nd Floor"
+                    },
+                    "204": {
+                        "location": "2nd Floor"
+                    },
+                    "205": {
+                        "location": "2nd Floor"
+                    },
+                    "302": {
+                        "location": "3rd Floor"
+                    },
+                    "303": {
+                        "location": "3rd Floor"
+                    },
+                    "305": {
+                        "location": "3rd Floor"
+                    },
+                    "401": {
+                        "location": "4th Floor"
+                    },
+                    "402": {
+                        "location": "4th Floor"
+                    },
+                    "Electrical Installation and Maintenance NC II Skills Lecture Room": {
+                        "location": "4th Floor"
+                    },
+                    "Biomedical Equipment Servicing NC II Lecture Room": {
+                        "location": "4th Floor"
+                    }
+                },
+                "laboratories": {
+                    "306 / WLAN": {
+                        "location": "3rd Floor"
+                    },
+                    "Radiologic Technology Laboratory": {
+                        "location": "3rd Floor"
+                    },
+                    "Electrical Installation and Maintenance NC II Skills Laboratory": {
+                        "location": "4th Floor"
+                    },
+                    "Biomedical Equipment Servicing NC II Skills Lab": {
+                        "location": "4th Floor"
+                    }
+                },
+                "restrooms": {
+                    "1st Floor Restrooms": {
+                        "location": "Beside stairs on each opposite side of the hallway"
+                    }
+                }
             }
         },
         "Court": {
             "id": "Court",
             "name": "Tennis / Volleyball/ Basketball/ Sepak Takraw Court",
             "description": "",
-            "categories": {
-                
-            }
+            "categories": {}
         },
         "MPPM": {
             "id": "MPPM",
             "name": "Dr. Martin P. Posadas Memorial Stadium",
             "description": "",
-            "categories": {
-                
-            }
+            "categories": {}
         },
         "Hazard": {
             "id": "Hazard",
             "name": "Hazardous Waste Safety Facility",
             "description": "",
-            "categories": {
-                
-            }
+            "categories": {}
         },
         "VetMed": {
             "id": "VetMed",
             "name": "College of Veterinary Medicine",
             "description": "",
             "categories": {
-                
+                "offices": {
+                    "College of Veterinary Medicine Dean's Office": {
+                        "location": "Ground Floor"
+                    }
+                },
+                "classrooms": {
+                    "Department of Pharma/Physio": {
+                        "location": "Ground Floor"
+                    },
+                    "Department of Anatomy": {
+                        "location": "Ground Floor"
+                    },
+                    "Department of Microbiology": {
+                        "location": "Ground Floor"
+                    },
+                    "Histo/Embryo Room": {
+                        "location": "Ground Floor"
+                    },
+                    "Amphitheater": {
+                        "location": "Ground Floor"
+                    }
+                },
+                "laboratories": {
+                    "Research Laboratory": {
+                        "location": "Ground Floor"
+                    },
+                    "Diagnostic Laboratory": {
+                        "location": "Ground Floor"
+                    }
+                },
+                "libraries": {
+                    "Veterinary Medicine Library": {
+                        "location": "Ground Floor"
+                    }
+                }
             }
         },
         "EventCenter": {
             "id": "EventCenter",
             "name": "VMUF Event Center",
             "description": "",
-            "categories": {
-                
-            }
+            "categories": {}
         },
         "Henyo": {
             "id": "Henyo",
             "name": "Henyo Corner",
             "description": "",
-            "categories": {
-                
-            }
+            "categories": {}
         },
         "Cafeteria2": {
             "id": "Cafeteria2",
             "name": "Cafeteria 2",
             "description": "",
-            "categories": {
-                
-            }
+            "categories": {}
         }
     }
 }
