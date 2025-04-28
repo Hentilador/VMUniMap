@@ -65,10 +65,13 @@ class InfoSheet extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(data['name']!, style: titleText),
-                          SizedBox(height: 12),
-                          Text(data['description']!),
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(0, 12, 0, 12),
+                            child: Text(data['description']!),
+                          ),
                         ],
                       ),
                     ),

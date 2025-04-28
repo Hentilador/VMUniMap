@@ -319,7 +319,7 @@
                         "location": "1st Floor, Windows A-I"
                     },
                     "Business Office": {
-                        "location": "1st Floor"
+                        "location": "1st Floor, Windows 1-11"
                     },
                     "CEN 201 Marketing and Communications Department Educational Media Center": {
                         "location": "2nd Floor"
@@ -527,7 +527,7 @@
         "Chapel": {
             "id": "Chapel",
             "name": "University Chapel",
-            "description": "",
+            "description": "Sunday - Mass |",
             "categories": {}
         },
         "VMMC": {
@@ -731,7 +731,7 @@
         "MPPM": {
             "id": "MPPM",
             "name": "Dr. Martin P. Posadas Memorial Stadium",
-            "description": "",
+            "description": "Saint Dominic Highschool\nVirgen Milagrosa Child Learning Center",
             "categories": {}
         },
         "Hazard": {
@@ -785,7 +785,7 @@
         "EventCenter": {
             "id": "EventCenter",
             "name": "VMUF Event Center",
-            "description": "",
+            "description": "April 29, 2025 - Moving Up Ceremony |",
             "categories": {}
         },
         "Henyo": {

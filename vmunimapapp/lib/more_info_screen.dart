@@ -86,18 +86,19 @@ class _MoreInfoPageState extends State<MoreInfoPage> {
               child: Column(
                 children: [
                   Text(data['name']!, style: titleText),
-                  SizedBox(height: 12),
-                  Center(
-                    child: Image.asset(
-                      'assets/images/buildings/${widget.selectedBuildingID}.webp',
-                      errorBuilder: (context, error, stackTrace) {
-                        return Image.asset('assets/images/vmuf.webp');
-                      },
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 12, 0, 12),
+                    child: Center(
+                      child: Image.asset(
+                        'assets/images/buildings/${widget.selectedBuildingID}.webp',
+                        errorBuilder: (context, error, stackTrace) {
+                          return Image.asset('assets/images/vmuf.webp');
+                        },
+                      ),
                     ),
                   ),
-                  // Text(data['description']!),
-                  SizedBox(height: 12),
 
+                  // Text(data['description']!),
                   ExpansionPanelList(
                     expansionCallback: (i, isExpanded) {
                       final index = category[i];
@@ -123,34 +124,51 @@ class _MoreInfoPageState extends State<MoreInfoPage> {
                                   in data['categories'][category[i]].keys)
                                 ListTile(
                                   title: Text('$property', style: propertyText),
-                                  subtitle: Column(children: [
-                                    for (var info in data['categories'][category[i]][property].keys)
-                                      Align(
-                                        alignment: Alignment.centerLeft,
-                                        child: Text('${data['categories'][category[i]][property][info]}'),
-                                      ),
-                                      if (data['categories'][category[i]].length > 1)
+                                  subtitle: Column(
+                                    children: [
+                                      for (var info
+                                          in data['categories'][category[i]][property]
+                                              .keys)
+                                        Align(
+                                          alignment: Alignment.centerLeft,
+                                          child: Text(
+                                            '${data['categories'][category[i]][property][info]}',
+                                          ),
+                                        ),
+                                      if (data['categories'][category[i]]
+                                              .length >
+                                          1)
                                         const Divider(),
-                                  ]),
+                                    ],
+                                  ),
                                   onTap: () {
                                     showDialog(
                                       context: context,
-                                      builder: (context) => FittedBox(
-                                        child: AlertDialog(
-                                          content: InteractiveViewer(
-                                            constrained: true,
-                                            minScale: 0.5,
-                                            maxScale: 3.0,
-                                            child: Image.asset('assets/images/rooms/${widget.selectedBuildingID}/$property.jpg',
-                                            filterQuality: FilterQuality.medium,
-                                            isAntiAlias: true,
-                                            errorBuilder: (context, error, stackTrace) {
-                                              return Image.asset('assets/images/vmuf.webp');
-                                            },
+                                      builder:
+                                          (context) => FittedBox(
+                                            child: AlertDialog(
+                                              content: InteractiveViewer(
+                                                constrained: true,
+                                                minScale: 0.5,
+                                                maxScale: 3.0,
+                                                child: Image.asset(
+                                                  'assets/images/rooms/${widget.selectedBuildingID}/$property.webp',
+                                                  filterQuality:
+                                                      FilterQuality.medium,
+                                                  isAntiAlias: true,
+                                                  errorBuilder: (
+                                                    context,
+                                                    error,
+                                                    stackTrace,
+                                                  ) {
+                                                    return Image.asset(
+                                                      'assets/images/vmuf.webp',
+                                                    );
+                                                  },
+                                                ),
+                                              ),
                                             ),
                                           ),
-                                        ),
-                                      ),
                                     );
                                   },
                                 ),

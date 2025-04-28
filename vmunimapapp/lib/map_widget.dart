@@ -34,7 +34,7 @@ class _CampusMapWidgetState extends State<CampusMapWidget> {
         child: Stack(
           children: [
             // Background elements could be added here
-            Image.asset('assets/images/campus.png', filterQuality: FilterQuality.medium,),
+            Image.asset('assets/images/campus.webp', filterQuality: FilterQuality.medium,),
             // Buildings
             for (final MapEntry(key: id, value: building)
                 in widget.mapData.buildings.entries)

@@ -116,7 +116,7 @@ class _HomeState extends State<Home> {
       ),
       drawer: Sidebar(
         onBuildingSelected:
-            _onBuildingSelected, // TODO: change back to _onBuildingSelected
+            _onBuildingSelected,
         transformationController: _transformationController,
       ),
       bottomNavigationBar: NavigationBar(
