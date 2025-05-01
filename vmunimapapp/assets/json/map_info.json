@@ -100,8 +100,50 @@
         "SpecSci": {
             "id": "SpecSci",
             "name": "Special Science High School / Education Bldg.",
-            "description": "",
-            "categories": {}
+            "description": "College: Education",
+            "categories": {
+                "offices": {
+                    "Principal's Office": {
+                        "location": "1st Floor"
+                    },
+                    "Special Science High School Faculty Room": {
+                        "location": "1st Floor"
+                    },
+                    "College of Education Dean's Office": {
+                        "location": "4th Floor"
+                    },
+                    "College of Education Faculty Room": {
+                        "location": "4th Floor"
+                    },
+                    "Accreditation / Consultation Room": {
+                        "location": "4th Floor"
+                    }
+                },
+                "classrooms": {
+                    "401": {
+                        "location": "4th Floor"
+                    },
+                    "403": {
+                        "location": "4th Floor"
+                    },
+                    "406": {
+                        "location": "4th Floor"
+                    },
+                    "407": {
+                        "location": "4th Floor"
+                    }
+                },
+                "laboratories": {
+                    "Educational Technology Laboratory": {
+                        "location": "4th Floor"
+                    }
+                },
+                "others": {
+                    "Practice House": {
+                        "location": "4th Floor"
+                    }
+                }
+            }
         },
         "DentPharm": {
             "id": "DentPharm",
@@ -732,7 +774,13 @@
             "id": "MPPM",
             "name": "Dr. Martin P. Posadas Memorial Stadium",
             "description": "Saint Dominic Highschool\nVirgen Milagrosa Child Learning Center",
-            "categories": {}
+            "categories": {
+                "offices": {
+                    "Sports Office": {
+                        "location": "Ground Floor, in front of athletes' dorms at the end of left hallway when entering from entrance under ramp"
+                    }
+                }
+            }
         },
         "Hazard": {
             "id": "Hazard",

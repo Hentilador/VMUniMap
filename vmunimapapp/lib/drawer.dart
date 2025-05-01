@@ -27,12 +27,7 @@ class _SidebarState extends State<Sidebar> {
 
   // List of categories or items to exclude from the drawer
   final List<String> _excludedItems = [
-    'restroom',
-    'restrooms',
-    'bathroom',
-    'bathrooms',
-    'toilet',
-    'toilets',
+    // 'restrooms',
   ];
 
   @override
