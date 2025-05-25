@@ -27,7 +27,6 @@ class Item {
 class _MoreInfoPageState extends State<MoreInfoPage> {
   late final Future<Map<String, dynamic>> buildingDataFuture;
   final Map<String, bool> _expandedStates = {};
-
   @override
   void initState() {
     super.initState();
@@ -188,3 +187,5 @@ class _MoreInfoPageState extends State<MoreInfoPage> {
     );
   }
 }
+
+

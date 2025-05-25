@@ -121,3 +121,4 @@ Future<CampusMapData> loadCampusMap() async {
 
   return CampusMapData(size: size, buildings: buildings);
 }
+

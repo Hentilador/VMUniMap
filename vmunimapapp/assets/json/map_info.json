@@ -343,7 +343,16 @@
             "id": "SHS",
             "name": "Senior High School Bldg.",
             "description": "",
-            "categories": {}
+            "categories": {
+                "offices": {
+                    "Principal's Office": {
+                        "location": "1st Floor"
+                    },
+                    "Faculty Office": {
+                        "location": "1st Floor"
+                    }
+                }
+            }
         },
         "Alumni": {
             "id": "Alumni",
@@ -570,7 +579,12 @@
             "id": "Chapel",
             "name": "University Chapel",
             "description": "Sunday - Mass |",
-            "categories": {}
+            "categories": {
+                "Pictures": {
+                    "Solemnity of St. Joseph - 1": {},
+                    "Solemnity of St. Joseph - 2": {}
+                }
+            }
         },
         "VMMC": {
             "id": "VMMC",
@@ -686,10 +700,10 @@
             "description": "Colleges: Hospitality Management, Radiologic Technology, School of Technical Vocational Education and Skills Training",
             "categories": {
                 "offices": {
-                    "Hospitality Management Faculty Office ": {
+                    "Hospitality Management Faculty Office": {
                         "location": "1st Floor"
                     },
-                    "Radiologic Technology Office ": {
+                    "Radiologic Technology Office": {
                         "location": "3rd Floor"
                     },
                     "School of Technical Vocational Education and Skills Training Office": {
@@ -744,7 +758,7 @@
                     }
                 },
                 "laboratories": {
-                    "306 / WLAN": {
+                    "WLAN": {
                         "location": "3rd Floor"
                     },
                     "Radiologic Technology Laboratory": {
@@ -778,6 +792,11 @@
                 "offices": {
                     "Sports Office": {
                         "location": "Ground Floor, in front of athletes' dorms at the end of left hallway when entering from entrance under ramp"
+                    }
+                },
+                "cafeterias": {
+                    "Cafeteria 2": {
+                        "location": "Ground Floor"
                     }
                 }
             }
@@ -834,17 +853,20 @@
             "id": "EventCenter",
             "name": "VMUF Event Center",
             "description": "April 29, 2025 - Moving Up Ceremony |",
-            "categories": {}
+            "categories": {
+                "Past Events": {
+                    "Lecture and Demonstration on Basic Life Support": {
+                        "date": "May 3, 2024"
+                    },
+                    "Career Guidance and VMUF Programs Presentation": {
+                        "date": "April 14, 2025"
+                    }
+                }
+            }
         },
         "Henyo": {
             "id": "Henyo",
             "name": "Henyo Corner",
-            "description": "",
-            "categories": {}
-        },
-        "Cafeteria2": {
-            "id": "Cafeteria2",
-            "name": "Cafeteria 2",
             "description": "",
             "categories": {}
         }

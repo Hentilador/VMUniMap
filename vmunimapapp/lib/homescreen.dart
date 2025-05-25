@@ -9,6 +9,7 @@ import 'package:vmunimapapp/more_info_screen.dart';
 import 'package:vmunimapapp/svg_parsing.dart';
 import 'package:vmunimapapp/text_formatting.dart';
 
+/// The main widget for the home screen.
 class Home extends StatefulWidget {
   const Home({super.key});
 
@@ -16,6 +17,7 @@ class Home extends StatefulWidget {
   State<Home> createState() => _HomeState();
 }
 
+/// The state class for the home screen.
 class _HomeState extends State<Home> {
   CampusMapData? mapData;
   String? selectedBuildingID;
@@ -38,6 +40,7 @@ class _HomeState extends State<Home> {
     _initialize();
   }
 
+  /// Initializes the home screen by loading the campus map data.
   Future<void> _initialize() async {
     try {
       final data = await loadCampusMap();
@@ -53,6 +56,7 @@ class _HomeState extends State<Home> {
     }
   }
 
+  /// Handles when a building is selected.
   dynamic _onBuildingSelected(String buildingId) {
     setState(() {
       // Toggle selection - if already selected, deselect it
@@ -67,6 +71,7 @@ class _HomeState extends State<Home> {
     // _zoomToBuilding(buildingId);
   }
 
+  /// Handles when a building is tapped.
   dynamic _onBuildingTapped(String buildingId) {
     setState(() {
       // Toggle selection - if already selected, deselect it
@@ -132,6 +137,7 @@ class _HomeState extends State<Home> {
     );
   }
 
+  /// Builds the body of the home screen.
   Widget _buildBody() {
     if (_currentPageIndex == 1) {
       // return ColorSchemeDisplay();
